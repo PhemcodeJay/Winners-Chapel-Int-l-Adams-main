@@ -11,6 +11,7 @@ import { Loader2 } from "lucide-react";
 // Pages
 import AuthPage from "@/pages/AuthPage";
 import HomePage from "@/pages/HomePage";
+import RedirectPage from "@/pages/RedirectPage";
 import Dashboard from "@/pages/Dashboard";
 import MembersPage from "@/pages/MembersPage";
 import EventsPage from "@/pages/EventsPage";
@@ -66,7 +67,10 @@ function Router() {
       </Route>
       
       <Route path="/">
-        <HomePage />
+        <RedirectPage />
+      </Route>
+      <Route path="/app">
+        <ProtectedRoute component={Dashboard} />
       </Route>
       <Route path="/dashboard">
         <ProtectedRoute component={Dashboard} />
