@@ -22,6 +22,25 @@ import {
   Music
 } from "lucide-react";
 
+// Social Media Brand Icons
+const FacebookIcon = () => (
+  <svg viewBox="0 0 24 24" className="h-12 w-12" fill="currentColor">
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" className="h-12 w-12" fill="currentColor">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 3.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  </svg>
+);
+
+const YouTubeIcon = () => (
+  <svg viewBox="0 0 24 24" className="h-12 w-12" fill="currentColor">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </svg>
+);
+
 export default function HomePage() {
   const [email, setEmail] = useState("");
   const [prayerName, setPrayerName] = useState("");
@@ -208,17 +227,17 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Connect With Us</h2>
             <p className="text-lg text-muted-foreground">Follow us on social media for updates and inspiration</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
             <Card>
               <CardHeader>
                 <CardTitle>Facebook</CardTitle>
               </CardHeader>
               <CardContent>
                 <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" className="block">
-                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors">
-                    <div className="text-center p-4">
-                      <Video className="h-12 w-12 mx-auto mb-2 text-primary" />
-                      <p className="text-sm">View our Facebook page</p>
+                  <div className="aspect-video bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center hover:from-blue-700 hover:to-blue-800 transition-all">
+                    <div className="text-center p-4 text-white">
+                      <FacebookIcon />
+                      <p className="text-sm mt-2 font-medium">View our Facebook page</p>
                     </div>
                   </div>
                 </a>
@@ -237,10 +256,10 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" className="block">
-                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors">
-                    <div className="text-center p-4">
-                      <ImageIcon className="h-12 w-12 mx-auto mb-2 text-primary" />
-                      <p className="text-sm">View our Instagram feed</p>
+                  <div className="aspect-video bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-lg flex items-center justify-center hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 transition-all">
+                    <div className="text-center p-4 text-white">
+                      <InstagramIcon />
+                      <p className="text-sm mt-2 font-medium">View our Instagram feed</p>
                     </div>
                   </div>
                 </a>
@@ -259,10 +278,10 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" className="block">
-                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors">
-                    <div className="text-center p-4">
-                      <Play className="h-12 w-12 mx-auto mb-2 text-primary" />
-                      <p className="text-sm">Watch our sermons</p>
+                  <div className="aspect-video bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center hover:from-red-700 hover:to-red-800 transition-all">
+                    <div className="text-center p-4 text-white">
+                      <YouTubeIcon />
+                      <p className="text-sm mt-2 font-medium">Watch our sermons</p>
                     </div>
                   </div>
                 </a>
@@ -287,14 +306,27 @@ export default function HomePage() {
             <p className="text-lg text-muted-foreground">Watch and listen to recent messages</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <Card key={item} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-video bg-muted flex items-center justify-center">
-                  <Play className="h-16 w-16 text-primary/50" />
-                </div>
+            {[
+              { title: "Sunday Service", date: "Every Sunday", url: "https://www.instagram.com/winnersadams/" },
+              { title: "Midweek Service", date: "Wednesdays", url: "https://www.instagram.com/winnersadams/" },
+              { title: "Youth Fellowship", date: "Saturdays", url: "https://www.instagram.com/winnersadams/" },
+              { title: "Faith Clinic", date: "Sundays", url: "https://www.instagram.com/winnersadams/" },
+              { title: "Prayer Meeting", date: "Fridays", url: "https://www.instagram.com/winnersadams/" },
+              { title: "Community Outreach", date: "Monthly", url: "https://www.instagram.com/winnersadams/" }
+            ].map((sermon, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <a href={sermon.url} target="_blank" rel="noopener noreferrer" className="block">
+                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center hover:from-primary/30 hover:to-primary/50 transition-all">
+                    <div className="text-center p-4">
+                      <Play className="h-16 w-16 mx-auto mb-2 text-primary" />
+                      <InstagramIcon />
+                      <p className="text-sm mt-2 text-primary font-medium">Watch on Instagram</p>
+                    </div>
+                  </div>
+                </a>
                 <CardHeader>
-                  <CardTitle className="text-lg">Recent Sermon {item}</CardTitle>
-                  <CardDescription>Add sermon title and date</CardDescription>
+                  <CardTitle className="text-lg">{sermon.title}</CardTitle>
+                  <CardDescription>{sermon.date}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -313,14 +345,35 @@ export default function HomePage() {
             <p className="text-lg text-muted-foreground">Moments from our church community</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-              <div key={item} className="aspect-square bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors">
-                <ImageIcon className="h-12 w-12 text-primary/30" />
-              </div>
+            {[
+              "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=400&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=400&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1511357847027-54db4e9a67e4?w=400&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=400&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=400&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1493836512294-502baa1986e2?w=400&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1516939884455-1445c8652f83?w=400&h=400&fit=crop"
+            ].map((imageUrl, index) => (
+              <a 
+                key={index} 
+                href={index % 2 === 0 ? "https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" : "https://www.instagram.com/winnersadams/"} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="aspect-square bg-muted rounded-lg overflow-hidden hover:ring-4 hover:ring-primary transition-all">
+                  <img 
+                    src={imageUrl} 
+                    alt={`Church gallery photo ${index + 1}`} 
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+              </a>
             ))}
           </div>
           <p className="text-center text-sm text-muted-foreground mt-4">
-            Add your church photos to showcase your community
+            View our full gallery on <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Facebook</a> and <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Instagram</a>
           </p>
         </div>
       </section>
@@ -333,23 +386,23 @@ export default function HomePage() {
             <p className="text-lg text-muted-foreground">Join us online from anywhere in the world</p>
           </div>
           <Card>
-            <CardContent className="p-6">
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <Play className="h-20 w-20 mx-auto mb-4 text-primary/50" />
-                  <p className="text-lg font-medium">Live stream will appear here</p>
-                  <p className="text-sm text-muted-foreground mt-2">Add your YouTube Live stream URL</p>
-                </div>
+          <CardContent className="p-6">
+            <div className="aspect-video bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg flex items-center justify-center">
+              <div className="text-center text-white">
+                <Play className="h-20 w-20 mx-auto mb-4 text-red-500" />
+                <p className="text-lg font-medium">Live stream will appear here</p>
+                <p className="text-sm text-gray-300 mt-2">Watch live on <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:underline">YouTube</a></p>
               </div>
-              <div className="text-center mt-4">
-                <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline">
-                    <Play className="mr-2 h-4 w-4" />
-                    Watch on YouTube
-                  </Button>
-                </a>
-              </div>
-            </CardContent>
+            </div>
+            <div className="text-center mt-4">
+              <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline">
+                  <Play className="mr-2 h-4 w-4" />
+                  Watch on YouTube
+                </Button>
+              </a>
+            </div>
+          </CardContent>
           </Card>
         </div>
       </section>
