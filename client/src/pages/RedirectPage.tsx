@@ -5,8 +5,8 @@ export default function RedirectPage() {
   const [, setLocation] = useLocation();
 
   useEffect(() => {
-    // Redirect to the main app login
-    setLocation('/auth');
+    // Redirect to the admin login
+    setLocation('/admin/auth');
   }, [setLocation]);
 
   return (

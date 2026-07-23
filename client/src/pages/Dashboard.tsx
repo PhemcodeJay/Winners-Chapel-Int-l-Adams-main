@@ -81,7 +81,7 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-2">
-              <a href="/members" className="flex items-center p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
+              <a href="/admin/members" className="flex items-center p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
                 <div className="h-8 w-8 rounded bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
                   <Users className="h-4 w-4" />
                 </div>
@@ -91,7 +91,7 @@ export default function Dashboard() {
                 </div>
               </a>
               
-              <a href="/donations" className="flex items-center p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
+              <a href="/admin/donations" className="flex items-center p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
                 <div className="h-8 w-8 rounded bg-emerald-100 text-emerald-600 flex items-center justify-center mr-3">
                   <HandCoins className="h-4 w-4" />
                 </div>
@@ -101,7 +101,7 @@ export default function Dashboard() {
                 </div>
               </a>
 
-              <a href="/events" className="flex items-center p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
+              <a href="/admin/events" className="flex items-center p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
                 <div className="h-8 w-8 rounded bg-amber-100 text-amber-600 flex items-center justify-center mr-3">
                   <Calendar className="h-4 w-4" />
                 </div>

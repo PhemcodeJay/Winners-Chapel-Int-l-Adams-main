@@ -10,7 +10,6 @@ import { Loader2 } from "lucide-react";
 
 // Pages
 import AuthPage from "@/pages/AuthPage";
-import HomePage from "@/pages/HomePage";
 import Dashboard from "@/pages/Dashboard";
 import MembersPage from "@/pages/MembersPage";
 import EventsPage from "@/pages/EventsPage";
@@ -29,7 +28,7 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
 
   useEffect(() => {
     if (!isLoading && !user) {
-      setLocation("/auth");
+      setLocation("/admin/auth");
     }
   }, [user, isLoading, setLocation]);
 
@@ -60,46 +59,47 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
 function Router() {
   return (
     <Switch>
-      <Route path="/auth" component={AuthPage} />
-      <Route path="/admin_church">
-        <AuthPage />
-      </Route>
+      {/* Admin login page */}
+      <Route path="/admin/auth" component={AuthPage} />
       
-      <Route path="/">
-        <AuthPage />
-      </Route>
-      <Route path="/app">
+      {/* Admin dashboard and management pages */}
+      <Route path="/admin/app">
         <ProtectedRoute component={Dashboard} />
       </Route>
-      <Route path="/dashboard">
+      <Route path="/admin/dashboard">
         <ProtectedRoute component={Dashboard} />
       </Route>
-      <Route path="/members">
+      <Route path="/admin/members">
         <ProtectedRoute component={MembersPage} />
       </Route>
-      <Route path="/events">
+      <Route path="/admin/events">
         <ProtectedRoute component={EventsPage} />
       </Route>
-      <Route path="/ministries">
+      <Route path="/admin/ministries">
         <ProtectedRoute component={MinistriesPage} />
       </Route>
-      <Route path="/donations">
+      <Route path="/admin/donations">
         <ProtectedRoute component={DonationsPage} />
       </Route>
-      <Route path="/analytics">
+      <Route path="/admin/analytics">
         <ProtectedRoute component={AnalyticsPage} />
       </Route>
-      <Route path="/welfare">
+      <Route path="/admin/welfare">
         <ProtectedRoute component={WelfarePage} />
       </Route>
-      <Route path="/evangelism">
+      <Route path="/admin/evangelism">
         <ProtectedRoute component={EvangelismPage} />
       </Route>
-      <Route path="/notifications">
+      <Route path="/admin/notifications">
         <ProtectedRoute component={NotificationsPage} />
       </Route>
-      <Route path="/users">
+      <Route path="/admin/users">
         <ProtectedRoute component={UsersPage} />
+      </Route>
+
+      {/* Redirect /admin to /admin/auth */}
+      <Route path="/admin">
+        <AuthPage />
       </Route>
 
       <Route component={NotFound} />

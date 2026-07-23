@@ -1,4 +1,4 @@
-import { type Express } from "express";
+import express, { type Express } from "express";
 import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
 import viteConfig from "../vite.config";
@@ -9,6 +9,15 @@ import { nanoid } from "nanoid";
 const viteLogger = createLogger();
 
 export async function setupVite(server: Server, app: Express) {
+  // Serve static landing page at root in dev mode
+  const staticPath = path.resolve(import.meta.dirname, "..", "static");
+  app.use("/", express.static(staticPath));
+
+  // Handle root route - serve static index.html
+  app.get("/", (_req, res) => {
+    res.sendFile(path.resolve(staticPath, "index.html"));
+  });
+
   const serverOptions = {
     middlewareMode: true,
     hmr: { server, path: "/vite-hmr" },
@@ -31,7 +40,8 @@ export async function setupVite(server: Server, app: Express) {
 
   app.use(vite.middlewares);
 
-  app.use("*", async (req, res, next) => {
+  // Serve React admin app at /admin/*
+  app.get("/admin*", async (req, res, next) => {
     const url = req.originalUrl;
 
     try {

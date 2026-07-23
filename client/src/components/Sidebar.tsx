@@ -22,16 +22,16 @@ export function Sidebar() {
   const { logout } = useAuth();
 
   const navItems = [
-    { href: "/", label: "Dashboard", icon: LayoutDashboard },
-    { href: "/analytics", label: "Analytics", icon: BarChart3 },
-    { href: "/members", label: "Members", icon: Users },
-    { href: "/events", label: "Events & Services", icon: Calendar },
-    { href: "/ministries", label: "Ministries", icon: Music },
-    { href: "/donations", label: "Donations", icon: HandCoins },
-    { href: "/welfare", label: "Welfare", icon: HeartHandshake },
-    { href: "/evangelism", label: "Evangelism", icon: Megaphone },
-    { href: "/notifications", label: "Notifications", icon: Mail },
-    { href: "/users", label: "Admin Users", icon: Shield },
+    { href: "/admin/app", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
+    { href: "/admin/members", label: "Members", icon: Users },
+    { href: "/admin/events", label: "Events & Services", icon: Calendar },
+    { href: "/admin/ministries", label: "Ministries", icon: Music },
+    { href: "/admin/donations", label: "Donations", icon: HandCoins },
+    { href: "/admin/welfare", label: "Welfare", icon: HeartHandshake },
+    { href: "/admin/evangelism", label: "Evangelism", icon: Megaphone },
+    { href: "/admin/notifications", label: "Notifications", icon: Mail },
+    { href: "/admin/users", label: "Admin Users", icon: Shield },
   ];
 
   return (

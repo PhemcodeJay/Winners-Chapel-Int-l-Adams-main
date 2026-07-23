@@ -31,7 +31,7 @@ export default function AuthPage() {
 
   useEffect(() => {
     if (user) {
-      setLocation("/");
+      setLocation("/admin/app");
     }
   }, [user, setLocation]);
 
