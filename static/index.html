@@ -9,15 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <script>
-    // Redirect to the main web app when user clicks Launch App
-    const WEB_APP_URL = 'https://wcia-church-management.onrender.com';
-    
-    function showMainApp() {
-      window.location.href = WEB_APP_URL;
-    }
-  </script>
 
   <style>
     :root {
@@ -105,24 +96,6 @@
       letter-spacing: 0.1em;
     }
     
-    .nav-cta {
-      background: var(--primary);
-      color: white;
-      padding: 0.6rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-    
-    .nav-cta:hover {
-      background: #0d4a2f;
-      transform: translateY(-1px);
-    }
-    
     /* Hero */
     .hero {
       padding: 5rem 0 4rem;
@@ -205,39 +178,6 @@
     .btn-secondary:hover {
       border-color: var(--primary);
       color: var(--primary);
-    }
-    
-    /* Redirect Notice */
-    #redirect-notice {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      background: var(--text);
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 0.9rem;
-    }
-    
-    #redirect-notice a {
-      color: white;
-      text-decoration: underline;
-    }
-    
-    .btn-small {
-      padding: 0.4rem 1rem;
-      background: var(--accent);
-      color: var(--text);
-      border: none;
-      border-radius: 4px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 0.8rem;
     }
     
     /* Sections */
@@ -707,14 +647,13 @@
 <body>
   <header>
     <nav>
-      <a href="#" class="logo" onclick="showMainApp(); return false;">
+      <a href="#" class="logo">
         <img src="assets/wcia-logo.svg" alt="WCIA Logo" class="logo-icon">
         <div class="logo-text">
           <span class="logo-name">WCIA Adams</span>
           <span class="logo-tagline">Winners Chapel</span>
         </div>
       </a>
-      <button class="nav-cta" onclick="showMainApp()">Launch App</button>
     </nav>
   </header>
 
@@ -729,12 +668,6 @@
           Welcome to a place where faith comes alive. Join us as we worship, grow, and impact our community together.
         </p>
         <div class="hero-buttons">
-          <button class="btn btn-primary" onclick="showMainApp()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-            Launch App
-          </button>
           <a href="#service-times" class="btn btn-secondary">Service Times</a>
         </div>
       </div>
@@ -1108,7 +1041,6 @@
           <li><a href="#service-times">Service Times</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="https://wcia-church-management.onrender.com" onclick="showMainApp(); return false;">Launch App</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1121,7 +1053,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 Winners Chapel International Adams. All rights reserved. <a href="https://wcia-church-management.onrender.com" style="color: inherit; text-decoration: underline;">Launch App</a></p>
+      <p>&copy; 2025 Winners Chapel International Adams. All rights reserved.</p>
     </div>
   </footer>
 
