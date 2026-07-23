@@ -2,4 +2,3 @@ node_modules
 .env
 proposal.html
 DEPLOYMENT.md
-static-site/index.html
