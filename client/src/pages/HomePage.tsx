@@ -83,12 +83,12 @@ export default function HomePage() {
           <p className="text-lg mb-8 max-w-2xl mx-auto">
             Welcome to a place where faith comes alive. Join us as we worship, grow, and impact our community together.
           </p>
-          <Link href="/auth">
-            <Button size="lg" className="text-lg px-8 py-6">
+          <Button asChild size="lg" className="text-lg px-8 py-6">
+            <Link href="/auth">
               <LogIn className="mr-2 h-5 w-5" />
               Admin Login
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </section>
 
