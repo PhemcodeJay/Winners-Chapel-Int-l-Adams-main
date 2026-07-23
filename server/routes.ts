@@ -37,18 +37,20 @@ export async function registerRoutes(
     throw new Error("SESSION_SECRET must be set");
   }
 
-  app.use(
-    session({
-      store: storage.sessionStore,
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: false,
-      cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
-    })
-  );
+  if (db) {
+    app.use(
+      session({
+        store: storage.sessionStore!,
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
+      })
+    );
 
-  app.use(passport.initialize());
-  app.use(passport.session());
+    app.use(passport.initialize());
+    app.use(passport.session());
+  }
 
   passport.use(
     new LocalStrategy(async (username, password, done) => {
@@ -442,7 +444,9 @@ export async function registerRoutes(
   });
 
   // === SEED DATA ===
-  await seedData();
+  if (db) {
+    await seedData();
+  }
 
   return httpServer;
 }

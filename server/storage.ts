@@ -15,14 +15,19 @@ import connectPg from "connect-pg-simple";
 import session from "express-session";
 import { pool } from "./db";
 
-const PostgresSessionStore = connectPg(session);
+export const sessionStore = pool
+  ? new (connectPg(session))({
+      pool,
+      createTableIfMissing: true,
+    })
+  : undefined;
 
 export interface IStorage {
   // Auth & Users
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  sessionStore: session.Store;
+  sessionStore?: session.Store;
 
   // Members
   getMembers(params?: { search?: string, status?: string }): Promise<Member[]>;
@@ -98,13 +103,10 @@ export interface IStorage {
 }
 
 export class DatabaseStorage implements IStorage {
-  sessionStore: session.Store;
+  sessionStore?: session.Store;
 
   constructor() {
-    this.sessionStore = new PostgresSessionStore({
-      pool,
-      createTableIfMissing: true,
-    });
+    this.sessionStore = sessionStore || new session.MemoryStore();
   }
 
   // Auth
@@ -373,22 +375,22 @@ export class DatabaseStorage implements IStorage {
         total: Number(donationStats?.total || 0),
         count: Number(donationStats?.count || 0),
         average: Number(donationStats?.avg || 0),
-        monthly: donationMonthly.map(d => ({
+        monthly: donationMonthly.map((d: any) => ({
           month: `${d.year}-${String(d.month).padStart(2, '0')}`,
           total: Number(d.total || 0),
           count: Number(d.count || 0),
         })),
       },
       events: {
-        monthly: eventAttendance.map(e => ({
-          month: `${e.year}-${String(e.month).padStart(2, '0')}`,
-          count: Number(e.count || 0),
-        })),
+          monthly: eventAttendance.map((e: any) => ({
+            month: `${e.year}-${String(e.month).padStart(2, '0')}`,
+            count: Number(e.count || 0),
+          })),
       },
-      membersGrowth: memberGrowth.map(m => ({
-        month: `${m.year}-${String(m.month).padStart(2, '0')}`,
-        count: Number(m.count || 0),
-      })),
+          membersGrowth: memberGrowth.map((m: any) => ({
+            month: `${m.year}-${String(m.month).padStart(2, '0')}`,
+            count: Number(m.count || 0),
+          })),
     };
   }
 
