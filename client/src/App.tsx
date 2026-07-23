@@ -61,6 +61,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/auth" component={AuthPage} />
+      <Route path="/admin_church">
+        <AuthPage />
+      </Route>
       
       <Route path="/">
         <HomePage />
