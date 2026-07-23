@@ -2,589 +2,1128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Winners Chapel International Adams - Church Administration System</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winners Chapel International Adams - Worship • Word • Witness</title>
+  <meta name="description" content="Winners Chapel International Adams is a vibrant community of believers dedicated to worship, teaching the Word, and reaching our world with the gospel of Jesus Christ.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    // Redirect to the main web app when user clicks Launch App
+    const WEB_APP_URL = 'https://wcia-church-management.onrender.com';
+    
+    function showMainApp() {
+      window.location.href = WEB_APP_URL;
+    }
+  </script>
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    body { font-family: 'Inter', sans-serif; }
+    :root {
+      --primary: #0f5e3c;
+      --primary-light: #0f5e3c20;
+      --primary-lighter: #0f5e3c10;
+      --text: #1a1a1a;
+      --text-muted: #666666;
+      --bg: #ffffff;
+      --bg-muted: #f5f5f5;
+      --border: #e5e5e5;
+      --accent: #d4a017;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Header / Nav */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+    }
+    
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    
+    .logo-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .nav-cta {
+      background: var(--primary);
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .nav-cta:hover {
+      background: #0d4a2f;
+      transform: translateY(-1px);
+    }
+    
+    /* Hero */
+    .hero {
+      padding: 5rem 0 4rem;
+      background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--bg) 100%);
+    }
+    
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero-logo {
+      width: 96px;
+      height: 96px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    
+    .hero-tagline {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 0.875rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #0d4a2f;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    /* Redirect Notice */
+    #redirect-notice {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: var(--text);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+    
+    #redirect-notice a {
+      color: white;
+      text-decoration: underline;
+    }
+    
+    .btn-small {
+      padding: 0.4rem 1rem;
+      background: var(--accent);
+      color: var(--text);
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    
+    /* Sections */
+    section {
+      padding: 4rem 0;
+    }
+    
+    section.bg-muted {
+      background: var(--bg-muted);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Service Times */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .service-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    
+    .service-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+    
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    
+    .service-card .service-type {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .service-time {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .service-location {
+      color: var(--text-muted);
+    }
+    
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .about-card {
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .about-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      background: var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .about-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    
+    /* Events */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .event-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .event-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .event-card .event-date {
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    
+    .event-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    /* Social / Connect */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .social-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .social-card h3 {
+      margin-bottom: 1rem;
+    }
+    
+    .social-icon-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--bg-muted);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s;
+    }
+    
+    .social-icon-link:hover {
+      background: var(--primary-lighter);
+    }
+    
+    .social-icon-link svg {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .social-label {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    /* Media Gallery */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .media-item {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--primary) 0%, #1a7a4a 100%);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    
+    .media-item:hover {
+      transform: scale(1.03);
+    }
+    
+    .media-item .play-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Photo Gallery */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .photo-item {
+      aspect-ratio: 1;
+      background: var(--bg-muted);
+      border-radius: 8px;
+      overflow: hidden;
+      display: block;
+    }
+    
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    
+    .photo-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    /* Giving Section */
+    .giving-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+    }
+    
+    .giving-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .giving-option h4 {
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    
+    .giving-option ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    
+    .giving-option li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .giving-option strong {
+      color: var(--text);
+    }
+    
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .contact-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    
+    .contact-card h3 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    
+    .contact-item h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .contact-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    
+    /* Newsletter */
+    .newsletter {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a7a4a 100%);
+      color: white;
+      padding: 3rem 0;
+    }
+    
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .newsletter h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .newsletter p {
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-input {
+      flex: 1;
+      padding: 0.875rem 1rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .newsletter-btn {
+      padding: 0.875rem 1.5rem;
+      background: var(--accent);
+      color: var(--text);
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    
+    .newsletter-btn:hover {
+      opacity: 0.9;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--text);
+      color: white;
+      padding: 3rem 0 2rem;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .footer-col h4 {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    .footer-col p, .footer-col li {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .footer-col a:hover {
+      color: white;
+    }
+    
+    .footer-col ul {
+      list-style: none;
+    }
+    
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 0;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        padding: 3rem 0 2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      section {
+        padding: 3rem 0;
+      }
+    }
   </style>
 </head>
-<body class="bg-white">
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-b from-blue-50 to-white py-20 px-4">
-    <div class="max-w-7xl mx-auto text-center">
-      <div class="mx-auto w-24 h-24 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 overflow-hidden">
-        <svg class="w-full h-full p-3 text-blue-800" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="4" fill="none"/>
-          <line x1="100" y1="30" x2="100" y2="170" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
-          <line x1="55" y1="75" x2="145" y2="75" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
-          <text x="60" y="185" font-family="Georgia, serif" font-size="32" font-weight="bold" fill="currentColor">W</text>
-        </svg>
-      </div>
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900">Winners Chapel International Adams</h1>
-      <p class="text-xl text-gray-600 mb-8">Worship • Word • Witness</p>
-      <p class="text-lg mb-8 max-w-2xl mx-auto text-gray-700">
-        Welcome to a place where faith comes alive. Join us as we worship, grow, and impact our community together.
-      </p>
-      <a href="/admin_church" class="inline-block bg-blue-800 text-white px-8 py-3 rounded-lg hover:bg-blue-900 transition-colors font-medium">
-        Church Admin Portal
+<body>
+  <header>
+    <nav>
+      <a href="#" class="logo" onclick="showMainApp(); return false;">
+        <img src="/wcia-logo.svg" alt="WCIA Logo" class="logo-icon">
+        <div class="logo-text">
+          <span class="logo-name">WCIA Adams</span>
+          <span class="logo-tagline">Winners Chapel</span>
+        </div>
       </a>
+      <button class="nav-cta" onclick="showMainApp()">Launch App</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <img src="/wcia-logo.svg" alt="Winners Chapel International Adams" class="hero-logo">
+        <h1>Winners Chapel International Adams</h1>
+        <p class="hero-tagline">Worship • Word • Witness</p>
+        <p class="hero-description">
+          Welcome to a place where faith comes alive. Join us as we worship, grow, and impact our community together.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="showMainApp()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Launch App
+          </button>
+          <a href="#service-times" class="btn btn-secondary">Service Times</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Service Times -->
-  <section id="service-times" class="py-16 px-4 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Service Times</h2>
-        <p class="text-lg text-gray-600">Join us for powerful services every week</p>
+  <section id="service-times">
+    <div class="container">
+      <div class="section-title">
+        <h2>Service Times</h2>
+        <p>Join us for powerful services every week</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="text-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <h3 class="text-2xl font-bold mb-2 text-gray-900">First Service</h3>
-          <p class="text-lg text-gray-600 mb-4">Morning Glory</p>
-          <p class="text-4xl font-bold text-blue-800 mb-2">8:00 AM - 10:00 AM</p>
-          <p class="text-gray-600">Adams, Nairobi</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>First Service</h3>
+          <p class="service-type">Morning Glory</p>
+          <p class="service-time">8:00 AM - 10:00 AM</p>
+          <p class="service-location">Adams, Nairobi</p>
         </div>
-        <div class="text-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <h3 class="text-2xl font-bold mb-2 text-gray-900">Second Service</h3>
-          <p class="text-lg text-gray-600 mb-4">Faith Clinic</p>
-          <p class="text-4xl font-bold text-blue-800 mb-2">10:00 AM - 12:00 PM</p>
-          <p class="text-gray-600">Adams, Nairobi</p>
+        <div class="service-card">
+          <h3>Second Service</h3>
+          <p class="service-type">Faith Clinic</p>
+          <p class="service-time">10:00 AM - 12:00 PM</p>
+          <p class="service-location">Adams, Nairobi</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- About Us -->
-  <section id="about" class="py-16 px-4">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">About Us</h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-          Winners Chapel International Adams is a vibrant community of believers dedicated to worship, 
-          teaching the Word, and reaching our world with the gospel of Jesus Christ.
-        </p>
+  <section class="bg-muted">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Us</h2>
+        <p>Winners Chapel International Adams is a vibrant community of believers dedicated to worship, teaching the Word, and reaching our world with the gospel of Jesus Christ.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-            <svg class="h-8 w-8 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
           </div>
-          <h3 class="text-xl font-bold mb-2 text-gray-900">Word</h3>
-          <p class="text-gray-600">Teaching the uncompromised Word of God for transformation and empowerment.</p>
+          <h3>Word</h3>
+          <p>Teaching the uncompromised Word of God for transformation and empowerment.</p>
         </div>
-        <div class="text-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-            <svg class="h-8 w-8 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+        <div class="about-card">
+          <div class="about-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
           </div>
-          <h3 class="text-xl font-bold mb-2 text-gray-900">Worship</h3>
-          <p class="text-gray-600">Creating an atmosphere for meaningful encounters with God through worship.</p>
+          <h3>Worship</h3>
+          <p>Creating an atmosphere for meaningful encounters with God through worship.</p>
         </div>
-        <div class="text-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-            <svg class="h-8 w-8 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        <div class="about-card">
+          <div class="about-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
           </div>
-          <h3 class="text-xl font-bold mb-2 text-gray-900">Witness</h3>
-          <p class="text-gray-600">Impacting our world through outreach, evangelism, and community service.</p>
+          <h3>Witness</h3>
+          <p>Impacting our world through outreach, evangelism, and community service.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Events & Announcements -->
-  <section class="py-16 px-4 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Events & Announcements</h2>
-        <p class="text-lg text-gray-600">Stay updated with what's happening in our church</p>
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Events & Announcements</h2>
+        <p>Stay updated with what's happening in our church</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex items-center gap-2 text-blue-800 mb-2">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            <h3 class="text-lg font-bold text-gray-900">Sunday Service</h3>
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-date">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline; vertical-align: text-bottom; margin-right: 0.25rem; color: var(--primary);">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Every Sunday
           </div>
-          <p class="text-sm text-gray-500 mb-2">Every Sunday</p>
-          <p class="text-gray-700">Join us for powerful worship and the undiluted Word of God.</p>
+          <h3>Sunday Service</h3>
+          <p>Join us for powerful worship and the undiluted Word of God.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex items-center gap-2 text-blue-800 mb-2">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-            <h3 class="text-lg font-bold text-gray-900">Midweek Service</h3>
+        <div class="event-card">
+          <div class="event-date">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline; vertical-align: text-bottom; margin-right: 0.25rem; color: var(--primary);">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            Wednesdays
           </div>
-          <p class="text-sm text-gray-500 mb-2">Wednesdays</p>
-          <p class="text-gray-700">Midweek prayer and Bible study for spiritual growth.</p>
+          <h3>Midweek Service</h3>
+          <p>Midweek prayer and Bible study for spiritual growth.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex items-center gap-2 text-blue-800 mb-2">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-            <h3 class="text-lg font-bold text-gray-900">Youth Fellowship</h3>
+        <div class="event-card">
+          <div class="event-date">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline; vertical-align: text-bottom; margin-right: 0.25rem; color: var(--primary);">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Saturdays
           </div>
-          <p class="text-sm text-gray-500 mb-2">Saturdays</p>
-          <p class="text-gray-700">A vibrant community for young people to grow in faith.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Social Media Feeds -->
-  <section class="py-16 px-4">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Connect With Us</h2>
-        <p class="text-lg text-gray-600">Follow us on social media for updates and inspiration</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Facebook -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-4 text-gray-900">Facebook</h3>
-            <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="block">
-              <div class="aspect-video bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center hover:from-blue-700 hover:to-blue-800 transition-all">
-                <div class="text-center p-4 text-white">
-                  <svg class="h-12 w-12 mx-auto mb-2" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                  <p class="text-sm mt-2 font-medium">View our Facebook page</p>
-                </div>
-              </div>
-            </a>
-            <div class="mt-4">
-              <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="block w-full text-center border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-50 transition-colors font-medium text-gray-700">Visit Facebook Page</a>
-            </div>
-          </div>
-        </div>
-        <!-- Instagram -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-4 text-gray-900">Instagram</h3>
-            <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-              <div class="aspect-video bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-lg flex items-center justify-center hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 transition-all">
-                <div class="text-center p-4 text-white">
-                  <svg class="h-12 w-12 mx-auto mb-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 3.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                  <p class="text-sm mt-2 font-medium">View our Instagram feed</p>
-                </div>
-              </div>
-            </a>
-            <div class="mt-4">
-              <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block w-full text-center border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-50 transition-colors font-medium text-gray-700">Visit Instagram Page</a>
-            </div>
-          </div>
-        </div>
-        <!-- YouTube -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-4 text-gray-900">YouTube</h3>
-            <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="block">
-              <div class="aspect-video bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center hover:from-red-700 hover:to-red-800 transition-all">
-                <div class="text-center p-4 text-white">
-                  <svg class="h-12 w-12 mx-auto mb-2" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                  <p class="text-sm mt-2 font-medium">Watch our sermons</p>
-                </div>
-              </div>
-            </a>
-            <div class="mt-4">
-              <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="block w-full text-center border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-50 transition-colors font-medium text-gray-700">Visit YouTube Channel</a>
-            </div>
-          </div>
+          <h3>Youth Fellowship</h3>
+          <p>A vibrant community for young people to grow in faith.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Sermon/Media Gallery -->
-  <section class="py-16 px-4 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Sermon Gallery</h2>
-        <p class="text-lg text-gray-600">Watch and listen to recent messages</p>
+  <!-- Social Media / Connect-->
+  <section class="bg-muted">
+    <div class="container">
+      <div class="section-title">
+        <h2>Connect With Us</h2>
+        <p>Follow us on social media for updates and inspiration</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="aspect-video bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center hover:from-blue-300 hover:to-blue-400 transition-all">
-              <div class="text-center p-4">
-                <svg class="h-16 w-16 mx-auto mb-2 text-blue-800" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="h-8 w-8 mx-auto text-blue-800" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 3.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                <p class="text-sm mt-2 text-blue-800 font-medium">Watch on Instagram</p>
-              </div>
-            </div>
+      <div class="social-grid">
+        <div class="social-card">
+          <h3>Facebook</h3>
+          <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="social-icon-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="color: #1877F2;">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <span class="social-label">Visit Facebook Page</span>
           </a>
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-900">Sunday Service</h3>
-            <p class="text-sm text-gray-500">Every Sunday</p>
-          </div>
         </div>
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="aspect-video bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center hover:from-blue-300 hover:to-blue-400 transition-all">
-              <div class="text-center p-4">
-                <svg class="h-16 w-16 mx-auto mb-2 text-blue-800" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="h-8 w-8 mx-auto text-blue-800" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 3.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                <p class="text-sm mt-2 text-blue-800 font-medium">Watch on Instagram</p>
-              </div>
-            </div>
+        <div class="social-card">
+          <h3>Instagram</h3>
+          <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="social-icon-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="color: #E4405F;">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 3.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+            <span class="social-label">Visit Instagram</span>
           </a>
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-900">Midweek Service</h3>
-            <p class="text-sm text-gray-500">Wednesdays</p>
-          </div>
         </div>
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="aspect-video bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center hover:from-blue-300 hover:to-blue-400 transition-all">
-              <div class="text-center p-4">
-                <svg class="h-16 w-16 mx-auto mb-2 text-blue-800" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="h-8 w-8 mx-auto text-blue-800" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 3.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                <p class="text-sm mt-2 text-blue-800 font-medium">Watch on Instagram</p>
-              </div>
-            </div>
+        <div class="social-card">
+          <h3>YouTube</h3>
+          <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="social-icon-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="color: #FF0000;">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span class="social-label">Visit YouTube</span>
           </a>
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-900">Youth Fellowship</h3>
-            <p class="text-sm text-gray-500">Saturdays</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="aspect-video bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center hover:from-blue-300 hover:to-blue-400 transition-all">
-              <div class="text-center p-4">
-                <svg class="h-16 w-16 mx-auto mb-2 text-blue-800" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="h-8 w-8 mx-auto text-blue-800" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 3.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                <p class="text-sm mt-2 text-blue-800 font-medium">Watch on Instagram</p>
-              </div>
-            </div>
-          </a>
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-900">Faith Clinic</h3>
-            <p class="text-sm text-gray-500">Sundays</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="aspect-video bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center hover:from-blue-300 hover:to-blue-400 transition-all">
-              <div class="text-center p-4">
-                <svg class="h-16 w-16 mx-auto mb-2 text-blue-800" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="h-8 w-8 mx-auto text-blue-800" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 3.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                <p class="text-sm mt-2 text-blue-800 font-medium">Watch on Instagram</p>
-              </div>
-            </div>
-          </a>
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-900">Prayer Meeting</h3>
-            <p class="text-sm text-gray-500">Fridays</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-          <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="aspect-video bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center hover:from-blue-300 hover:to-blue-400 transition-all">
-              <div class="text-center p-4">
-                <svg class="h-16 w-16 mx-auto mb-2 text-blue-800" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="h-8 w-8 mx-auto text-blue-800" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 3.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                <p class="text-sm mt-2 text-blue-800 font-medium">Watch on Instagram</p>
-              </div>
-            </div>
-          </a>
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-900">Community Outreach</h3>
-            <p class="text-sm text-gray-500">Monthly</p>
-          </div>
         </div>
       </div>
-      <div class="text-center mt-8">
-        <p class="text-sm text-gray-500">More sermons available on our YouTube channel</p>
+    </div>
+  </section>
+
+  <!-- Sermon Gallery -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Sermon Gallery</h2>
+        <p>Watch and listen to recent messages</p>
+      </div>
+      <div class="media-grid">
+        <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="media-item">
+          <div class="play-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <span>Sunday Service</span>
+        </a>
+        <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="media-item">
+          <div class="play-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <span>Midweek Service</span>
+        </a>
+        <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="media-item">
+          <div class="play-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <span>Youth Fellowship</span>
+        </a>
+        <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="media-item">
+          <div class="play-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <span>Faith Clinic</span>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Photo Gallery -->
-  <section class="py-16 px-4">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Photo Gallery</h2>
-        <p class="text-lg text-gray-600">Moments from our church community</p>
+  <section class="bg-muted">
+    <div class="container">
+      <div class="section-title">
+        <h2>Photo Gallery</h2>
+        <p>Moments from our church community</p>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="block">
-          <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:ring-4 hover:ring-blue-800 transition-all">
-            <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?w=400&h=400&fit=crop" alt="Church gallery photo 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
-          </div>
+      <div class="photo-grid">
+        <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="photo-item">
+          <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?w=400&h=400&fit=crop" alt="Church event">
         </a>
-        <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-          <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:ring-4 hover:ring-blue-800 transition-all">
-            <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&h=400&fit=crop" alt="Church gallery photo 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
-          </div>
+        <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="photo-item">
+          <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&h=400&fit=crop" alt="Worship">
         </a>
-        <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="block">
-          <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:ring-4 hover:ring-blue-800 transition-all">
-            <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=400&h=400&fit=crop" alt="Church gallery photo 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
-          </div>
+        <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="photo-item">
+          <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=400&h=400&fit=crop" alt="Community service">
         </a>
-        <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-          <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:ring-4 hover:ring-blue-800 transition-all">
-            <img src="https://images.unsplash.com/photo-1511357847027-54db4e9a67e4?w=400&h=400&fit=crop" alt="Church gallery photo 4" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
-          </div>
-        </a>
-        <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="block">
-          <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:ring-4 hover:ring-blue-800 transition-all">
-            <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=400&h=400&fit=crop" alt="Church gallery photo 5" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
-          </div>
-        </a>
-        <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-          <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:ring-4 hover:ring-blue-800 transition-all">
-            <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=400&h=400&fit=crop" alt="Church gallery photo 6" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
-          </div>
-        </a>
-        <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="block">
-          <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:ring-4 hover:ring-blue-800 transition-all">
-            <img src="https://images.unsplash.com/photo-1493836512294-502baa1986e2?w=400&h=400&fit=crop" alt="Church gallery photo 7" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
-          </div>
-        </a>
-        <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block">
-          <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:ring-4 hover:ring-blue-800 transition-all">
-            <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?w=400&h=400&fit=crop" alt="Church gallery photo 8" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
-          </div>
+        <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="photo-item">
+          <img src="https://images.unsplash.com/photo-1511357847027-54db4e9a67e4?w=400&h=400&fit=crop" alt="Church gathering">
         </a>
       </div>
-      <p class="text-center text-sm text-gray-500 mt-4">
-        View our full gallery on <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="text-blue-800 hover:underline">Facebook</a> and <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="text-blue-800 hover:underline">Instagram</a>
+      <p class="text-center" style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+        View our full gallery on <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Facebook</a> and <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Instagram</a>
       </p>
     </div>
   </section>
 
-  <!-- Live Stream -->
-  <section class="py-16 px-4 bg-gray-50">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Live Stream</h2>
-        <p class="text-lg text-gray-600">Join us online from anywhere in the world</p>
+  <!-- Giving & Donations -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Giving & Donations</h2>
+        <p>Support the ministry and make an impact</p>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-sm">
-        <div class="aspect-video bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg flex items-center justify-center">
-          <div class="text-center text-white">
-            <svg class="h-20 w-20 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            <p class="text-lg font-medium">Live stream will appear here</p>
-            <p class="text-sm text-gray-300 mt-2">Watch live on <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="text-red-400 hover:underline">YouTube</a></p>
+      <div class="giving-card">
+        <div class="text-center" style="margin-bottom: 2rem;">
+          <div style="width: 64px; height: 64px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path>
+            </svg>
+          </div>
+          <h3>Give Online</h3>
+          <p style="color: var(--text-muted); margin-top: 0.25rem;">Your generous giving helps us Reach, Teach, and Touch lives</p>
+        </div>
+        <div class="giving-options">
+          <div class="giving-option">
+            <h4>Bank Transfer Details</h4>
+            <ul>
+              <li><strong>Bank:</strong> [Add Bank Name]</li>
+              <li><strong>Account:</strong> Winners Chapel International Adams</li>
+              <li><strong>Number:</strong> [Add Account Number]</li>
+              <li><strong>Branch:</strong> [Add Branch]</li>
+            </ul>
+          </div>
+          <div class="giving-option">
+            <h4>M-Pesa Paybill</h4>
+            <ul>
+              <li><strong>Paybill:</strong> [Add Paybill Number]</li>
+              <li><strong>Account:</strong> [Add Account Number]</li>
+            </ul>
           </div>
         </div>
-        <div class="text-center mt-4">
-          <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="inline-block border border-gray-300 rounded-lg px-6 py-2 hover:bg-gray-50 transition-colors font-medium text-gray-700">
-            <svg class="inline mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            Watch on YouTube
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Giving/Donations -->
-  <section class="py-16 px-4">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Giving & Donations</h2>
-        <p class="text-lg text-gray-600">Support the ministry and make an impact</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-sm">
-        <div class="text-center mb-6">
-          <div class="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-            <svg class="h-8 w-8 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900">Give Online</h3>
-          <p class="text-gray-600">Your generous giving helps us Reach, Teach, and Touch lives</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="space-y-4">
-            <h3 class="font-semibold text-lg text-gray-900">Bank Transfer Details</h3>
-            <div class="space-y-2 text-sm text-gray-700">
-              <p><strong>Bank:</strong> [Add Bank Name]</p>
-              <p><strong>Account Name:</strong> Winners Chapel International Adams</p>
-              <p><strong>Account Number:</strong> [Add Account Number]</p>
-              <p><strong>Branch:</strong> [Add Branch]</p>
-            </div>
-          </div>
-          <div class="space-y-4">
-            <h3 class="font-semibold text-lg text-gray-900">M-Pesa Paybill</h3>
-            <div class="space-y-2 text-sm text-gray-700">
-              <p><strong>Paybill:</strong> [Add Paybill Number]</p>
-              <p><strong>Account:</strong> [Add Account Number]</p>
-            </div>
-          </div>
-        </div>
-        <div class="mt-6 p-4 bg-gray-50 rounded-lg">
-          <p class="text-sm text-center text-gray-600">
-            Thank you for your partnership in the gospel. May the Lord bless your generous giving.
-          </p>
+        <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-muted); border-radius: 8px; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+          Thank you for your partnership in the gospel. May the Lord bless your generous giving.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Prayer Request Form -->
-  <section class="py-16 px-4 bg-gray-50">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Prayer Request</h2>
-        <p class="text-lg text-gray-600">We believe in the power of prayer. Share your prayer request with us.</p>
+  <!-- Contact Us -->
+  <section class="bg-muted">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>We would love to hear from you</p>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-sm">
-        <form id="prayer-form" class="space-y-6">
-          <div>
-            <label class="block text-sm font-medium mb-2 text-gray-700">Your Name</label>
-            <input type="text" id="prayerName" placeholder="Enter your name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-2 text-gray-700">Prayer Request</label>
-            <textarea id="prayerRequest" placeholder="Share your prayer request..." rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
-          </div>
-          <button type="submit" class="w-full bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition-colors font-medium">
-            Submit Prayer Request
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter Signup -->
-  <section class="py-16 px-4">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Stay Connected</h2>
-      <p class="text-lg text-gray-600 mb-8">Subscribe to our newsletter for updates and inspiration</p>
-      <div class="bg-white p-6 rounded-lg shadow-sm">
-        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4">
-          <input type="email" id="email" placeholder="Enter your email address" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
-          <button type="submit" class="bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition-colors font-medium">
-            Subscribe
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Form & Location -->
-  <section id="contact" class="py-16 px-4 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Contact Us</h2>
-        <p class="text-lg text-gray-600">We would love to hear from you</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="text-xl font-bold mb-4 text-gray-900">Send us a Message</h3>
-          <form id="contact-form" class="space-y-6">
-            <div>
-              <label class="block text-sm font-medium mb-2 text-gray-700">Name</label>
-              <input type="text" id="contactName" placeholder="Your name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Send us a Message</h3>
+          <form onsubmit="event.preventDefault(); alert('Thank you for reaching out. We will get back to you soon.'); this.reset();">
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Name</label>
+              <input type="text" placeholder="Your name" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem;">
             </div>
-            <div>
-              <label class="block text-sm font-medium mb-2 text-gray-700">Email</label>
-              <input type="email" id="contactEmail" placeholder="your.email@example.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Email</label>
+              <input type="email" placeholder="your.email@example.com" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem;">
             </div>
-            <div>
-              <label class="block text-sm font-medium mb-2 text-gray-700">Message</label>
-              <textarea id="contactMessage" placeholder="How can we help you?" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Message</label>
+              <textarea rows="5" placeholder="How can we help you?" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; resize: vertical;"></textarea>
             </div>
-            <button type="submit" class="w-full bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition-colors font-medium">
-              Send Message
-            </button>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
           </form>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="text-xl font-bold mb-4 text-gray-900">Visit Us</h3>
-          <div class="space-y-6">
-            <div class="flex items-start gap-4">
-              <svg class="h-6 w-6 text-blue-800 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              <div>
-                <h3 class="font-semibold mb-1 text-gray-900">Location</h3>
-                <p class="text-gray-600">Adams, Nairobi, Kenya</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <svg class="h-6 w-6 text-blue-800 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              <div>
-                <h3 class="font-semibold mb-1 text-gray-900">Phone</h3>
-                <p class="text-gray-600">[Add phone number]</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <svg class="h-6 w-6 text-blue-800 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <div>
-                <h3 class="font-semibold mb-1 text-gray-900">Email</h3>
-                <p class="text-gray-600">[Add email address]</p>
-              </div>
-            </div>
-            <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-              <div class="text-center">
-                <svg class="h-12 w-12 mx-auto mb-2 text-blue-800/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                <p class="text-sm text-gray-500">Map embed</p>
-              </div>
+        <div class="contact-card">
+          <h3>Visit Us</h3>
+          <div class="contact-item">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <div>
+              <h4>Location</h4>
+              <p>Adams, Nairobi, Kenya</p>
             </div>
           </div>
+          <div class="contact-item">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <div>
+              <h4>Phone</h4>
+              <p>[Add phone number]</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <div>
+              <h4>Email</h4>
+              <p>[Add email address]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter / Live Stream -->
+  <section class="bg-muted">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay Connected</h2>
+        <p>Subscribe to our newsletter for updates and inspiration</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing! We\'ll keep you updated.'); this.reset();">
+          <input type="email" placeholder="Enter your email address" required class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+        <div style="margin-top: 2rem;">
+          <p style="margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.9;">Watch us live on YouTube</p>
+          <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.615 3.184c-3.604-.246-10.831-.245-14.435 0C1.154 3.358 0 8.045 0 12s1.154 8.642 5.18 8.816c3.604.245 10.831.245 14.435 0C23.846 20.642 25 15.955 25 12s-1.154-8.642-5.18-8.816zM9 16V8l8.2 4.2L9 16z"/>
+            </svg>
+            Watch Live on YouTube
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-800 text-white py-12 px-4">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-3 gap-8 mb-8">
-        <div>
-          <h3 class="font-bold text-xl mb-4">Winners Chapel International Adams</h3>
-          <p class="text-blue-100">Worship • Word • Witness</p>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Quick Links</h4>
-          <ul class="space-y-2 text-blue-100">
-            <li><a href="#service-times" class="hover:text-white">Service Times</a></li>
-            <li><a href="#about" class="hover:text-white">About Us</a></li>
-            <li><a href="#contact" class="hover:text-white">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Follow Us</h4>
-          <div class="space-y-2">
-            <a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer" class="block text-blue-100 hover:text-white">Facebook</a>
-            <a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer" class="block text-blue-100 hover:text-white">Instagram</a>
-            <a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer" class="block text-blue-100 hover:text-white">YouTube</a>
-          </div>
-        </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem;">Winners Chapel International Adams</h4>
+        <p>Worship • Word • Witness</p>
       </div>
-      <div class="border-t border-blue-700 pt-8 text-center text-blue-200">
-        <p>&copy; 2024 Winners Chapel International Adams. All rights reserved.</p>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#service-times">Service Times</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://wcia-church-management.onrender.com" onclick="showMainApp(); return false;">Launch App</a></li>
+        </ul>
       </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/p/Wci-Adams-Winners-Chapel-International-Adams-100080393651416/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.instagram.com/winnersadams/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.youtube.com/channel/UCYC2AgLeU1vvE-JhlStW-JA" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Winners Chapel International Adams. All rights reserved. <a href="https://wcia-church-management.onrender.com" style="color: inherit; text-decoration: underline;">Launch App</a></p>
     </div>
   </footer>
 
-  <script>
-    // Handle all form submissions with simple alerts
-    document.getElementById('prayer-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Your prayer request has been submitted. We will pray for you.');
-      this.reset();
-    });
-
-    document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for subscribing! We\'ll keep you updated.');
-      this.reset();
-    });
-
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for reaching out. We will get back to you soon.');
-      this.reset();
-    });
-
-    // Smooth scroll for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  </script>
 </body>
 </html>
