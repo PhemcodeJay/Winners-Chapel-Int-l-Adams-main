@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Circle background -->
+  <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="4" fill="none"/>
+  <!-- Cross -->
+  <line x1="100" y1="30" x2="100" y2="170" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+  <line x1="55" y1="75" x2="145" y2="75" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+  <!-- T text top-left -->
+  <text x="38" y="155" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="currentColor">T</text>
+  <!-- A text top-right -->
+  <text x="108" y="155" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="currentColor">A</text>
+  <!-- C text bottom-center -->
+  <text x="75" y="195" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="currentColor">C</text>
+</svg>

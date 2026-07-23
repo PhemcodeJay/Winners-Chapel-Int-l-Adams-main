@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: wcia-church-management
+    runtime: node
+    plan: free
+    build:
+      buildCommand: npm install --include=dev && npm run build
+    start:
+      startCommand: node ./dist/index.cjs
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 24
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wcia-db
+          property: connectionString
+      - key: CHURCH_NAME
+        value: Winners Chapel International Adams
+      - key: SMTP_FROM
+        value: wcadamsarcade@gmail.com
+    healthCheck:
+      path: /api/user
+    autoDeploy: true
+
+databases:
+  - name: wcia-db
+    region: oregon
+    plan: free
