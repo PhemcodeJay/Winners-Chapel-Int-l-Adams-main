@@ -83,12 +83,6 @@ export default function HomePage() {
           <p className="text-lg mb-8 max-w-2xl mx-auto">
             Welcome to a place where faith comes alive. Join us as we worship, grow, and impact our community together.
           </p>
-          <Button asChild size="lg" className="text-lg px-8 py-6">
-            <Link href="/auth">
-              <LogIn className="mr-2 h-5 w-5" />
-              Admin Login
-            </Link>
-          </Button>
         </div>
       </section>
 
@@ -615,7 +609,6 @@ export default function HomePage() {
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><Link href="/auth" className="hover:text-primary-foreground">Admin Login</Link></li>
                 <li><a href="#service-times" className="hover:text-primary-foreground">Service Times</a></li>
                 <li><a href="#about" className="hover:text-primary-foreground">About Us</a></li>
                 <li><a href="#contact" className="hover:text-primary-foreground">Contact</a></li>

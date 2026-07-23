@@ -316,6 +316,11 @@ export async function registerRoutes(
     }
   });
 
+  // Admin Church Route
+  app.get("/admin_church", (req, res) => {
+    res.redirect("/auth");
+  });
+
   // === EMAIL NOTIFICATIONS ===
   app.get("/api/notification-templates", requireAuth, async (req, res) => {
     const templates = await storage.getNotificationTemplates();
